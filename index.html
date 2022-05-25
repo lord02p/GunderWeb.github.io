@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunder</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+        
+        .s-i-bar {
+            margin-top: 10px;
+            justify-content: end;
+            align-items: center;
+            height: 2.3rem;
+            display: none;
+        }
+        /* loader............... */
+        
+        .help2 {
+            display: none;
+        }
+        /* loader */
+        
+        .progeress_bar {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .loader {
+            animation: rotate 1s infinite;
+            height: 50px;
+            width: 50px;
+        }
+        
+        .loader:before,
+        .loader:after {
+            border-radius: 50%;
+            content: '';
+            display: block;
+            height: 20px;
+            width: 20px;
+        }
+        
+        .loader:before {
+            animation: ball1 1s infinite;
+            background-color: #cb2025;
+            box-shadow: 30px 0 0 #f8b334;
+            margin-bottom: 10px;
+        }
+        
+        .loader:after {
+            animation: ball2 1s infinite;
+            background-color: #00a096;
+            box-shadow: 30px 0 0 #97bf0d;
+        }
+        
+        @keyframes rotate {
+            0% {
+                -webkit-transform: rotate(0deg) scale(0.8);
+                -moz-transform: rotate(0deg) scale(0.8);
+            }
+            50% {
+                -webkit-transform: rotate(360deg) scale(1.2);
+                -moz-transform: rotate(360deg) scale(1.2);
+            }
+            100% {
+                -webkit-transform: rotate(720deg) scale(0.8);
+                -moz-transform: rotate(720deg) scale(0.8);
+            }
+        }
+        
+        @keyframes ball1 {
+            0% {
+                box-shadow: 30px 0 0 #f8b334;
+            }
+            50% {
+                box-shadow: 0 0 0 #f8b334;
+                margin-bottom: 0;
+                -webkit-transform: translate(15px, 15px);
+                -moz-transform: translate(15px, 15px);
+            }
+            100% {
+                box-shadow: 30px 0 0 #f8b334;
+                margin-bottom: 10px;
+            }
+        }
+        
+        @keyframes ball2 {
+            0% {
+                box-shadow: 30px 0 0 #97bf0d;
+            }
+            50% {
+                box-shadow: 0 0 0 #97bf0d;
+                margin-top: -20px;
+                -webkit-transform: translate(15px, 15px);
+                -moz-transform: translate(15px, 15px);
+            }
+            100% {
+                box-shadow: 30px 0 0 #97bf0d;
+                margin-top: 0;
+            }
+        }
+        /* loader close */
+        
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .display-none {
+            display: none;
+        }
+        
+        .none {
+            display: none;
+        }
+        
+        .inline-block {
+            display: inline-block;
+        }
+        
+        .re_div {
+            columns: 20rem auto;
+        }
+        
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.4rem 1rem;
+            font-size: 14px;
+            border-bottom: 1px solid #cdcdcd;
+        }
+        
+         :root {
+            --main-clr: rgb(11 112 112);
+        }
+        /* navbar */
+        
+        .navbar {
+            height: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            background-color: #f7f7f7;
+            color: black;
+            font-family: "Source Sans Pro", sans-serif;
+            box-shadow: 0 0 3px rgb(0 0 0 / 20%);
+        }
+        
+        .logo {
+            display: flex;
+            font-size: 1.3rem;
+            align-items: normal;
+            cursor: pointer;
+        }
+        
+        .footer_logo {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: normal;
+            cursor: pointer;
+        }
+        
+        .m-l {
+            margin-left: 10px;
+        }
+        
+        .input-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 2.3rem;
+        }
+        
+        .input-container {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            padding-right: 1rem;
+            height: 2.3rem;
+            display: none;
+        }
+        
+        input {
+            height: 100%;
+            border: 2px solid var(--main-clr);
+            outline: none;
+            width: 15rem;
+            padding-left: 10px;
+            text-transform: capitalize;
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+        }
+        
+        input:hover {
+            background-color: #f1f1f1;
+            border: 1px solid rgb(21 171 171);
+        }
+        
+        .select {
+            height: 2rem;
+            border: none;
+            outline: none;
+            text-align: center;
+            background: none;
+            border: none;
+        }
+        
+        button {
+            color: white;
+            padding: 0 14px;
+            height: 100%;
+            border: 1px solid var(--main-clr);
+            background-color: var(--main-clr);
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+        
+        .input-bar button:hover {
+            background-color: rgb(21 171 171);
+        }
+        /* main */
+        
+        main {
+            padding: 1rem;
+            columns: 20rem auto;
+        }
+        
+        .red-div {
+            background: var(--main-clr);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin: 2rem 1rem 0 1rem;
+        }
+        /* section */
+        
+        .section-attribute {
+            border-radius: 4px;
+            border: 1px solid var(--main-clr);
+            box-shadow: 0px 5px 6px rgb(0 0 0 / 22%);
+            width: 100%;
+            margin: 0 0 1rem 0;
+            display: inline-block;
+        }
+        
+        .section-attribute:hover {
+            box-shadow: none;
+        }
+        
+        .section-name {
+            padding: 6px;
+            text-align: center;
+            background: var(--main-clr);
+            color: white;
+        }
+        
+        .section-attribute-items {
+            width: 100%;
+        }
+        /* list-items */
+        
+        .list-items {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            font-size: 16px;
+        }
+        
+        .list-items ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .list-items ul a:hover {
+            color: rgb(21 171 171);
+        }
+        
+        .list-items ul li:hover {
+            cursor: pointer;
+            color: rgb(21 171 171);
+        }
+        
+        .list-items select {
+            font-size: 16px;
+        }
+        
+        .list-items select:hover {
+            color: rgb(21 171 171);
+        }
+        /* footer */
+        
+        .footer-basic {
+            background-color: #2c2b2b;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 12rem;
+        }
+        
+        .footer-basic a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-basic .list-inline {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-basic .social {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-basic .copyright {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        .footer-basic a:hover {
+            color: var(--main-clr);
+        }
+        /* mq */
+        
+        @media screen and (max-width:782px) {
+            .input-bar {
+                display: none;
+            }
+            .input-container {
+                margin-top: 1rem;
+                display: inline-flex;
+                width: 100%;
+            }
+        }
+        
+        @media screen and (max-width:471px) {
+            .item-list li {
+                display: none;
+            }
+            .footer-basic .list-inline {
+                gap: 1rem;
+                font-size: 14px;
+            }
+            .input-container {
+                justify-content: center;
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body onload="loaded()">
+
+    <!-- loader -->
+    <div class="help">
+        <div class="progeress_bar">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <!-- header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h2>G</h2><span>under</span>
+            </div>
+
+            <div class="list-items">
+                <ul>
+                    <li id="home-btn">Home</li>
+                    <li id="rule-btn">Rules</a>
+                    </li>
+                </ul>
+
+                <select onchange="gp_select()" class="select" name="" id="select">
+                    <option value="Groups" selected>Groups</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                    <option value="d">D</option>
+                    <option value="e">E</option>
+                    <option value="f">F</option>
+                    <option value="g">G</option>
+                    <option value="h">H</option>
+                    <option value="l">L</option>
+                    <option value="m">M</option>
+                    <option value="o">O</option>
+                    <option value="p">P</option>
+                    <option value="r">R</option>
+                    <option value="s">S</option>
+                    <option value="t">T</option>
+                    <option value="w">W</option>
+                </select>
+                <ul class="item-list">
+                    <li><a href="#groups"> Contact </a></li>
+                    <li> <a href="#about"> About </a></li>
+                </ul>
+
+            </div>
+
+            <div class="input-bar">
+                <input class="input" id="input" type="text" placeholder="Group name...">
+                <button class="btn" onclick="result()">SEARCH</button>
+            </div>
+        </nav>
+
+
+    </header>
+
+    <div class="input-container">
+        <input class="input" id="input2" type="text" placeholder="Group name...">
+        <button class="btn" id="btn">SEARCH</button>
+    </div>
+    <!-- loader -->
+    <div class="help2">
+        <div class="progeress_bar">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <div class="red-div">
+        <h3 id="result-attribute">All Accounts Name and Groups</h3>
+    </div>
+
+    <!-- main -->
+    <main>
+
+        <section class="section-attribute section-a">
+            <div class="section-name">
+                <h4 id="A">Attribute a</h4>
+            </div>
+            <div class="section-attribute-items">
+                <div class="flex-between">
+                    <p>accrued income</p>
+                    <p>Current Assets</p>
+                </div>
+
+                <div class="flex-between">
+                    <p>accrued rent</p>
+                    <p>Current Assets</p>
+                </div>
+
+                <div class="flex-between">
+                    <p>advertisement expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between">
+                    <p>advertisement payable</p>
+                    <p>current liabilities</p>
+                </div>
+
+                <div class="flex-between">
+                    <p>air conditioner</p>
+                    <p>fixed assets</p>
+                </div>
+
+                <div class="flex-between">
+                    <p>apprentice premium</p>
+                    <p>Direct Income</p>
+                </div>
+
+                <div class="flex-between">
+                    <p>audit fees</p>
+                    <p>Indirect Expenses</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-b">
+            <div class=" section-name ">
+                <h4>Attribute b</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>bad debts</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bad debts received</p>
+                    <p>Indirect Incomes</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bad debts reserve</p>
+                    <p>Indirect Incomes</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bank</p>
+                    <p>Bank Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bank balance</p>
+                    <p>Bank Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bank charges</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bank commission</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bank loan</p>
+                    <p>Loans & Liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bank overdraft</p>
+                    <p>Bank OD</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bills payable</p>
+                    <p>Current Liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bills receivable</p>
+                    <p>Current Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bombay branch</p>
+                    <p>Branch & Division</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>bonds</p>
+                    <p>Current Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>building</p>
+                    <p>Fixed Assets</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-c">
+            <div class="section-name ">
+                <h4 id="A ">Attribute c</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>capital</p>
+                    <p>Capital Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>car</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>car expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>car repair</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>carriage</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>carriage on sales</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>cash</p>
+                    <p>Cash in Hand</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>cash at bank</p>
+                    <p>Bank Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>closing stock</p>
+                    <p>Stock in Hand</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>coal & fuel</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>gas & water of factiry</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>coffee expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>coke expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>commission(Cr.)</p>
+                    <p>Indirect Income</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>commission(Dr.)</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>computer</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>consignment stock</p>
+                    <p>Current Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>consumed material</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>coolage</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>creditors</p>
+                    <p>Subdry Creditors</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-d ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute d</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>debtors</p>
+                    <p>Sundry Debtors</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>deferred expenses</p>
+                    <p>Current Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>deferred income</p>
+                    <p>Current Liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>delhi branch</p>
+                    <p>Branch & Division</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>depreciation</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>depreciation reserve</p>
+                    <p>Current Liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>difference in trial balence (dr or cr)</p>
+                    <p>Suspense Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>discount received</p>
+                    <p>Indirect Income</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>discount allowed</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>donation</p>
+                    <p>indirect expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>drawing</p>
+                    <p>Capital Account</p>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section class="section-attribute section-e ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute e</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>electricity expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>expenses on purchases</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>expenses on sales</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>export duty</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section-attribute section-f ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute f</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>factory</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>factory expenses</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>factory income</p>
+                    <p>Direct Income</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>farm house</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>fdr</p>
+                    <p>Current Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>fire insurance</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>fitting charges received</p>
+                    <p>Indirect Income</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>forex gain loss</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>freight</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>freight inward</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>freight on purchases</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>freight on sales</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>freight outward</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>fuel & power of factory</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>furniture & fitting</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>furniture & fixture</p>
+                    <p>Fixed Assets</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section-attribute section-g ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute g</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>gas & water</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>general expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>general reserve</p>
+                    <p>Current Liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>godown rent</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>goods sent on consignment</p>
+                    <p>Sales Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>goodwill</p>
+                    <p>Fixed Assets</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section-attribute section-h ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute h</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>horse & carts</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>house rent</p>
+                    <p>Capital Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>hundi (assets)</p>
+                    <p>Current Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>hundi (liability)</p>
+                    <p>current liabilities</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section-attribute section-i ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute i</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>import duty</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>income form repair</p>
+                    <p>Indirect Income</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>income form assets</p>
+                    <p>Indirect Income</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>income form investments</p>
+                    <p>Indirect Income</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>income tax</p>
+                    <p>Capital Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>input vat 4%, 12.5%</p>
+                    <p>Duties & Taxes</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>insurance</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>insurance claim</p>
+                    <p>Indirect Incomes</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>insurance company</p>
+                    <p>Sundry Debtors</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>interest (dr.)</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>interest on capital</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>interest on drawing</p>
+                    <p>Indirect Income</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>interest on loan</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>interest received (cr.)</p>
+                    <p>Indirect Incomes</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>invest in govt. bond </p>
+                    <p>Investment</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>investment</p>
+                    <p>Investment</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section-attribute section-l ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute l</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>labour charges</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>land & building</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>lease hold building</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>legal expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>lic premium(dr.)</p>
+                    <p>Capital Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>lic premium(cr.)</p>
+                    <p>Capital Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>life insurance</p>
+                    <p>capital account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>loan on mortgage, loans</p>
+                    <p>Loans & Liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>loose tools</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>loss by damage</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>loss by fire</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>loss in transit</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>loss on assets</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>loss on join venture</p>
+                    <p>Indirect Expenses</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-m ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute m</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>machine & tools</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>machine repair</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>manager's commission</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>manufacturing expenses</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>master plus</p>
+                    <p>Investment</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>miscellaneous expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>miscellaneous income</p>
+                    <p>Indirect Income</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>motor cycle</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>motor cycle repair</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>mutual fund</p>
+                    <p>Investment</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-o ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute o</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>octroi</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>office expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>oil</p>
+                    <p>Direct expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>opening stock</p>
+                    <p>Stock in hand</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>output vat 4%, 12.5%</p>
+                    <p>Duties & Taxes</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>outstanding expenses</p>
+                    <p>Current Liabilities</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-p ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute p</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>packing expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>pan & Tea expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>personal expenses</p>
+                    <p>Capital Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>petrol expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>plant & machine</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>postage & telegram</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>power & fuel</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>prepaid expenses</p>
+                    <p>Current Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>printing & advertisement</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>printing & stationery</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>paper & advertisement</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>production wages</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>profit on consignment</p>
+                    <p>Indirect Incomes</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>profit on jointventure</p>
+                    <p>Indirect Incomes</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>provision for bad debts</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>provision for discount on creditors</p>
+                    <p>Indirect Incomes</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>provision for discount on debtors</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>provision for office expenses</p>
+                    <p>Current Liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>purchases</p>
+                    <p>purchases Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>purchases of new land</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>purchases of raw material</p>
+                    <p>purchase Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>purchases return</p>
+                    <p>purchase Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>purchases up/ex-up</p>
+                    <p>purchase Account</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-r ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute r</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>railway Authority</p>
+                    <p>Sundry Debtors</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>rates & Taxes</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>refreshment Expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>refrigerator</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>rent</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>rent & Tax</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>rent on Purchase</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>rent Payable</p>
+                    <p>Current Liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>rent received</p>
+                    <p>Indirect Incomes</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>repair & renovation</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>repair charges received</p>
+                    <p>Indirect Incomes</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>return Inward</p>
+                    <p>Sales Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>return Outward</p>
+                    <p>Purchase Account</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-s ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute s</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>salary</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>salary & Wages</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>salary payable</p>
+                    <p>Current Liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>sales</p>
+                    <p>sales Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>sales return</p>
+                    <p>sales Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>sales up/ sales ex-up</p>
+                    <p>sales Account</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>scooter</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>shares / bonds</p>
+                    <p>Investment</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>shop</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>shop Expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>shop Rent</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>showroom / shop</p>
+                    <p>Fixed Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>showroom repair</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>stable expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>stamp & postage</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>stationery</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>stock</p>
+                    <p>stock in hand</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>stock of material</p>
+                    <p>Current Assets</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>sundry creditors</p>
+                    <p>sundry Creditors</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>sundry debtors</p>
+                    <p>sundry Debtors</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-t ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute t</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>tea exp. payable</p>
+                    <p>Current Liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>tea or coffee expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>telephone expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>telephone securities</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>trade expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>train freight & rent</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>travelling expenses</p>
+                    <p>Indirect Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>typewrite</p>
+                    <p>Fixed Assets</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-u ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute u</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>unearned income</p>
+                    <p>Current Liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>uptt</p>
+                    <p>Duties & taxes</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-v ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute v</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>vat payable</p>
+                    <p>current liabilities</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>vehicle repair</p>
+                    <p>Indirect Expenses</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-attribute section-w ">
+            <div class="section-name ">
+                <h4 id="A ">Attribute w</h4>
+            </div>
+            <div class="section-attribute-items ">
+
+                <div class="flex-between ">
+                    <p>wages</p>
+                    <p>Direct Expenses</p>
+                </div>
+
+                <div class="flex-between ">
+                    <p>wages on Production</p>
+                    <p>Direct Expenses</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer -->
+    <div class="footer-basic">
+        <footer>
+            <div class="social"><a href="https://www.instagram.com/bobby_yt0/?hl=en"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-instagram" viewBox="0 0 16 16">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+              </svg></a><a href="https://github.com/lord02p"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-github" viewBox="0 0 16 16">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+              </svg></a><a href="https://www.facebook.com/raju.mahanta.921677/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+              </svg></a><a href="https://twitter.com/i/flow/login"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-twitter" viewBox="0 0 16 16">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+              </svg></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="index.html">Home</a></li>
+                <li class="list-inline-item"><a href="https://github.com/lord02p">Services</a></li>
+                <li class="list-inline-item"><a href="https://www.instagram.com/bobby_yt0/?hl=en">Contact</a></li>
+                <li class="list-inline-item"><a href="https://github.com/lord02p">About</a></li>
+                <li class="list-inline-item"><a href="https://www.google.com/search?rlz=1C1RXQR_enIN1004IN1004&sxsrf=ALiCzsYahzinFYYgbciYE0niS48vrYOmaA:1653378781254&q=Privacy+Policy+twitter&spell=1&sa=X&ved=2ahUKEwiS-r330_f3AhVKSWwGHUdtDTMQirwEKAB6BAgCEDI&biw=1366&bih=667&dpr=1">Privacy Policy</a></li>
+            </ul>
+            <div class="footer_logo">
+                <h2>G</h2><span>under</span>
+                <h2 class="m-l">&copy; 2021</h2>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // loader
+        function loaded() {
+            document.querySelector('.help').style.display = 'none';
+
+        }
+        // loader bar 2
+        function loader() {
+            document.querySelector('.help2').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                document.querySelector('.help2').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 2000);
+        }
+
+        // main methods
+        var inputbar = document.getElementById('input');
+        inputbar.style.textTransform = 'capitalize';
+        var btn = document.querySelector('.btn');
+        var section_attribute = document.querySelectorAll('.section-attribute');
+        var p = document.getElementsByTagName('p');
+        var h4 = document.getElementsByTagName('h4');
+
+
+        function result() {
+
+            if (inputbar.value === '') {
+                inputbar.focus();
+            } else {
+                // valuse get method
+
+                var arr = Array.from(p);
+                for (let index = 0; index < arr.length; index++) {
+                    var re = arr[index].innerText;
+                    loader();
+                    if (inputbar.value === re) {
+
+                        // Display none section's Items....
+
+                        var section_arr = Array.from(section_attribute);
+                        for (let index = 0; index < section_arr.length; index++) {
+                            section_attribute[index].style.display = 'none';
+                        }
+                        // re div display none
+                        if (document.querySelector('.re_div')) {
+                            document.querySelector('.re_div').remove();
+                        }
+
+                        document.getElementById('result-attribute').innerText = 'Your Search Result';
+                        // first attribute get method
+                        var a1 = inputbar.value;
+                        var a2 = a1.split('');
+                        // valus result method
+                        var re_div = document.createElement('div');
+                        re_div.classList.add('re_div');
+                        re_div.classList.add('none_div');
+                        var r_text = `
+              <section class="section-attribute section-a">
+              <div class="section-name">
+                  <h4 id="A">Attribute ${a2[0]}</h4>
+              </div>
+              <div class="section-attribute-items">
+                  <div class="flex-between">
+                      <p>${arr[index].innerText}</p>
+                      <p>${arr[index + 1].innerText}</p>
+                  </div>
+              </div>
+          </section>
+              `;
+
+                        // related values get method
+                        var att_arr = Array.from(h4);
+                        for (let index = 0; index < att_arr.length; index++) {
+                            var last_length = h4[index].innerText.split('');
+                            var final_last_length = last_length.length - 1;
+                            var final_final_last_length = last_length[final_last_length];
+                            if (a2[0] === final_final_last_length) {
+                                var b1 = h4[index].parentElement;
+                                var b2 = b1.parentElement;
+                                b2.classList.add('inline-block');
+
+                            }
+                        }
+
+                        //  append result in main tag
+                        re_div.innerHTML = r_text;
+                        document.getElementsByTagName('main')[0].appendChild(re_div);
+                        document.getElementsByTagName('main')[0].appendChild(b2);
+                        b2.style.display = 'inline-block';
+                        var v1 = document.querySelectorAll('.inline-block');
+                        var v2 = Array.from(v1);
+                        for (let index = 0; index < v2.length; index++) {
+                            v1[index].children[0].innerText = 'Related Result';
+                        }
+                        // related show result div
+                        inputbar.value = '';
+                    };
+                };
+            };
+
+            // // home btn
+            // var home_btn = document.getElementById('home-btn');
+            // var se_ar = Array.from(section_attribute);
+            // home_btn.addEventListener('click', () => {
+            //     loader();
+
+            //     document.getElementById('result-attribute').innerText = 'All Accounts Name and Groups';
+            //     for (let index = 0; index < se_ar.length; index++) {
+            //         if (section_attribute[index].style.display === 'none') {
+            //             section_attribute[index].style.display = 'inline-block';
+            //             if (document.querySelectorAll('.section-rules')[index]) {
+            //                 document.querySelectorAll('.section-rules')[index].style.display = 'none';
+            //             }
+            //         } else {
+
+            //         }
+
+            //     }
+            // })
+
+
+
+
+
+        };
+
+        // another btn and input
+        var btn = document.getElementById('btn');
+        var input2 = document.getElementById('input2');
+        btn.addEventListener('click', () => {
+            if (input2.value === '') {
+                input2.focus();
+            } else {
+                // valuse get method
+
+                var arr = Array.from(p);
+                for (let index = 0; index < arr.length; index++) {
+                    var re = arr[index].innerText;
+                    loader();
+                    if (input2.value === re) {
+
+                        // Display none section's Items....
+                        var section_arr = Array.from(section_attribute);
+                        for (let index = 0; index < section_arr.length; index++) {
+                            section_attribute[index].style.display = 'none';
+                        }
+                        // re div display none
+                        if (document.querySelector('.re_div')) {
+                            document.querySelector('.re_div').remove();
+                        }
+
+                        document.getElementById('result-attribute').innerText = 'Your Search Result';
+                        // first attribute get method
+                        var a1 = input2.value;
+                        var a2 = a1.split('');
+
+                        // valus result method
+                        var re_div = document.createElement('div');
+                        re_div.classList.add('re_div');
+                        re_div.classList.add('none_div');
+                        var r_text = `
+          <section class="section-attribute section-a">
+          <div class="section-name">
+              <h4 id="A">Attribute ${a2[0]}</h4>
+          </div>
+          <div class="section-attribute-items">
+              <div class="flex-between">
+                  <p>${arr[index].innerText}</p>
+                  <p>${arr[index + 1].innerText}</p>
+              </div>
+          </div>
+      </section>
+          `;
+
+                        // related values get method
+                        var attt_arr = Array.from(h4);
+                        for (let index = 0; index < attt_arr.length; index++) {
+                            var last_length = h4[index].innerText.split('');
+                            var final_last_length = last_length.length - 1;
+                            var final_final_last_length = last_length[final_last_length];
+                            if (a2[0] === final_final_last_length) {
+                                var b1 = h4[index].parentElement;
+                                var b2 = b1.parentElement;
+                                b2.classList.add('inline-block');
+                            }
+                        }
+
+                        //  append result in main tag
+                        re_div.innerHTML = r_text;
+                        document.getElementsByTagName('main')[0].appendChild(re_div);
+                        document.getElementsByTagName('main')[0].appendChild(b2);
+                        b2.style.display = 'inline-block';
+                        var v1 = document.querySelectorAll('.inline-block');
+                        var v2 = Array.from(v1);
+                        for (let index = 0; index < v2.length; index++) {
+                            v1[index].children[0].innerText = 'Related Result';
+                        }
+                        // related show result div
+                        input2.value = '';
+                    } else {}
+                }
+            }
+        })
+
+
+
+        // home btn
+        var home_btn = document.getElementById('home-btn');
+        var se_ar = Array.from(section_attribute);
+        home_btn.addEventListener('click', () => {
+
+            loader();
+            var in_bl = document.querySelectorAll('.inline-block');
+            var in_bl_arr = Array.from(in_bl);
+            for (let index = 0; index < in_bl_arr.length; index++) {
+
+                if (in_bl[index]) {
+                    var r1 = in_bl[index].classList[1];
+                    var r2 = r1.split('');
+                    var r3 = r2[r2.length - 1];
+                    console.log(r3);
+
+                    in_bl[index].children[0].innerText = `Attribute ${r3}`
+
+                }
+                if (document.querySelector('.none_div')) {
+                    document.querySelector('.none_div').remove();
+                }
+            }
+
+
+            document.getElementById('result-attribute').innerText = 'All Accounts Name and Groups';
+            for (let index = 0; index < se_ar.length; index++) {
+                if (section_attribute[index].style.display === 'none') {
+                    section_attribute[index].style.display = 'inline-block';
+                    if (document.querySelectorAll('.section-rules')[index]) {
+                        document.querySelectorAll('.section-rules')[index].style.display = 'none';
+                    }
+                } else {
+
+                }
+
+            }
+        })
+
+
+
+
+
+        // group select method
+        var select = document.getElementById('select');
+
+
+        function gp_select() {
+            // Selected values get method
+            if (select.value === 'Groups') {} else {
+                // another group none 
+                loader();
+                var main = document.getElementsByTagName('main')[0];
+                var main_ele = Array.from(main.children);
+                for (let index = 0; index < main_ele.length; index++) {
+                    main_ele[index].style.display = 'none';
+                }
+
+                var att_arr = Array.from(h4);
+                for (let index = 0; index < att_arr.length; index++) {
+                    var last_length = h4[index].innerText.split('');
+                    var final_last_length = last_length.length - 1;
+                    var final_final_last_length = last_length[final_last_length];
+                    if (select.value === final_final_last_length) {
+                        var b1 = h4[index].parentElement;
+                        var b2 = b1.parentElement;
+                        b2.style.display = 'inline-block';
+
+                    }
+                }
+            }
+
+        }
+
+
+        //  Rules......
+        var rule_btn = document.getElementById('rule-btn');
+        rule_btn.addEventListener('click', () => {
+            loader();
+            var main = document.getElementsByTagName('main')[0];
+            var main_ele = Array.from(main.children);
+            for (let index = 0; index < main_ele.length; index++) {
+                main_ele[index].style.display = 'none';
+            }
+            document.getElementById('result-attribute').innerText = "All Account's Rules";
+
+            // append rules
+            var div = document.createElement('div');
+            div.classList.add('re_div');
+            div.innerHTML = `
+
+ <!-- rules -->
+
+ <section class="section-attribute section-rules ">
+     <div class="section-name">
+         <h4>Nominal Account</h4>
+     </div>
+     <div class="section-attribute-items ">
+
+         <div class="flex-between ">
+             <p>All Expenses and Loses are Debit</p>
+         </div>
+         <div class="flex-between ">
+             <p>All Incomes and Gains are Credit</p>
+         </div>
+     </div>
+ </section>
+
+ <section class="section-attribute section-rules ">
+     <div class="section-name">
+         <h4>Personal Account</h4>
+     </div>
+     <div class="section-attribute-items ">
+
+         <div class="flex-between ">
+             <p>What Comes in Debit</p>
+         </div>
+         <div class="flex-between ">
+             <p>What Goes out Credit</p>
+         </div>
+     </div>
+ </section>
+
+
+ <section class="section-attribute section-rules ">
+     <div class="section-name">
+         <h4>Real Account</h4>
+     </div>
+     <div class="section-attribute-items ">
+
+         <div class="flex-between ">
+             <p>Debit is The Receiver</p>
+         </div>
+         <div class="flex-between ">
+             <p>Credit is The Giveher</p>
+         </div>
+     </div>
+ </section>
+ 
+ `;
+            document.getElementsByTagName('main')[0].append(div);
+        })
+    </script>
+</body>
+
+</html>
